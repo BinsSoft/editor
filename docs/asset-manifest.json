@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/BinsSoft/editor/static/css/main.115eb85e.chunk.css",
+    "main.js": "/BinsSoft/editor/static/js/main.4333f1e3.chunk.js",
+    "main.js.map": "/BinsSoft/editor/static/js/main.4333f1e3.chunk.js.map",
+    "runtime-main.js": "/BinsSoft/editor/static/js/runtime-main.ca8bd3e4.js",
+    "runtime-main.js.map": "/BinsSoft/editor/static/js/runtime-main.ca8bd3e4.js.map",
+    "static/css/2.47e06e2e.chunk.css": "/BinsSoft/editor/static/css/2.47e06e2e.chunk.css",
+    "static/js/2.24d88111.chunk.js": "/BinsSoft/editor/static/js/2.24d88111.chunk.js",
+    "static/js/2.24d88111.chunk.js.map": "/BinsSoft/editor/static/js/2.24d88111.chunk.js.map",
+    "index.html": "/BinsSoft/editor/index.html",
+    "precache-manifest.b8c6d894f5c6fcdf6a1c05710c2188e0.js": "/BinsSoft/editor/precache-manifest.b8c6d894f5c6fcdf6a1c05710c2188e0.js",
+    "service-worker.js": "/BinsSoft/editor/service-worker.js",
+    "static/css/2.47e06e2e.chunk.css.map": "/BinsSoft/editor/static/css/2.47e06e2e.chunk.css.map",
+    "static/css/main.115eb85e.chunk.css.map": "/BinsSoft/editor/static/css/main.115eb85e.chunk.css.map",
+    "static/js/2.24d88111.chunk.js.LICENSE": "/BinsSoft/editor/static/js/2.24d88111.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ca8bd3e4.js",
+    "static/css/2.47e06e2e.chunk.css",
+    "static/js/2.24d88111.chunk.js",
+    "static/css/main.115eb85e.chunk.css",
+    "static/js/main.4333f1e3.chunk.js"
+  ]
+}

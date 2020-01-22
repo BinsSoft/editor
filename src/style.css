@@ -1,0 +1,104 @@
+body {
+    background-color: rgb(37, 37, 38);
+}
+.editor-container {
+    height: 90vh;
+    /* border: 1px solid #CCC; */
+    background-color: #1e1e1e;
+}
+.hidden {
+    display: none;
+}
+.editor-code-container  {
+    height: 80vh;
+    position: relative;
+    overflow: auto;
+    align-items: stretch;
+    display: flex;
+}
+.editor-code-container div.form-control {
+    border: none;
+    /* border-top: 1px solid #CCC ; */
+    margin-top: 5px;
+    background-color: #1e1e1e;
+    color:#CCC;
+    outline: none;
+    resize: none;
+    font-size: 12px;
+    width:calc(100% - 30px);
+
+}
+.editor-code-container div.form-control:focus {
+    box-shadow: none;
+}
+
+.editor-code-container::before{
+    /* content: attr(data-line);
+    background-color: black;
+    color: white;
+    white-space: pre;
+    width: 30px; */
+    /* white-space: pre;
+    display: inline-block;
+    text-align: center;
+    background: rgb(37, 37, 38);
+    color: #CCC;
+    position: absolute;
+    width: 20px;
+    font-size: 12px;
+    padding-top: 5px; */
+}
+.iframe-code {
+    border: none;
+    border-left: 1px solid #CCC;
+    background-color: #CCC;
+}
+.btn {
+    border-radius: 0px;
+}
+.editor-element-container {
+    margin-top: 10px;
+    width: 97%;
+}
+
+/* Loader */
+.default-container {
+    position: relative;
+}
+.loader-container {
+    width: calc(100% - 40px);
+    padding: 10px 20px;
+    text-align: center;
+    position: absolute;
+    z-index: 99;
+    border-radius: 0 0 5px 5px;
+    background: rgba(255,255,255,0.5);
+    font-weight: bold;
+    color: #9c2d0b;
+}
+.loader {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+  }
+  .loader:after {
+    content: " ";
+    display: block;
+    width: 32px;
+    height: 32px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: spin 1.2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+  }
+/* end loader */
