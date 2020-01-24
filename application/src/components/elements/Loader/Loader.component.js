@@ -1,10 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 class Loader extends React.Component {
-    componentWillReceiveProps(nextProps) {
-       console.log(nextProps)
 
-    }
     render() {
         return (
             <React.Fragment>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 class Editor extends React.Component {
     constructor() {
         super()
@@ -52,20 +53,26 @@ class Editor extends React.Component {
                         externalContent += `<link rel="stylesheet" href="` + item.value + `"/>`
                     }
                 });
-                code.open();
-                code.writeln(
-                    this.state.editorCodeElement.html +
-                    " " +
-                    externalContent +
-                    ((this.state.editorCodeElement.css) ? "<style>" +
-                        this.state.editorCodeElement.css +
-                        "</style>" : "") +
-                    ((this.state.editorCodeElement.script) ?
-                        "<script>" +
-                        this.state.editorCodeElement.script +
-                        "</script>" : "")
-                );
-                code.close();
+                try {
+
+
+                    code.open();
+                    code.writeln(
+                        this.state.editorCodeElement.html +
+                        " " +
+                        externalContent +
+                        ((this.state.editorCodeElement.css) ? "<style>" +
+                            this.state.editorCodeElement.css +
+                            "</style>" : "") +
+                        ((this.state.editorCodeElement.script) ?
+                            "<script>" +
+                            this.state.editorCodeElement.script +
+                            "</script>" : "")
+                    );
+                    code.close();
+                } catch(err) {
+                    console.log(err);
+                }
             }, 5000)
 
         })
