@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import EditorHeader from './editor/EditorHeader.component';
 class Editor extends React.Component {
     constructor() {
         super()
@@ -85,12 +85,13 @@ class Editor extends React.Component {
         return (
             <div className="row editor-container">
                 <div className="col-md-6 col-xs-12">
+                    <EditorHeader/>
                     <br />
                     <div className="row">
                         <div className="col-md-9">
                             <div className="btn-group btn-group-toggle" data-toggle="buttons">
                                 <label className={"btn btn-primary " + ((this.state.editorElement.html === true) ? "active" : "")}>
-                                    <input type="radio" name="options" id="option1" autocomplete="off" onClick={() => {
+                                    <input type="radio" name="options" id="option1" autoComplete="off" onClick={() => {
                                         this.setState({
                                             editorElement: {
                                                 html: true,
@@ -103,7 +104,7 @@ class Editor extends React.Component {
   </label>
 
                                 <label className={"btn btn-primary " + ((this.state.editorElement.script === true) ? "active" : "")}>
-                                    <input type="radio" name="options" id="option2" autocomplete="off" onClick={() => {
+                                    <input type="radio" name="options" id="option2" autoComplete="off" onClick={() => {
                                         this.setState({
                                             editorElement: {
                                                 html: false,
@@ -115,7 +116,7 @@ class Editor extends React.Component {
                                     }} /> Script
   </label>
                                 <label className={"btn btn-primary " + ((this.state.editorElement.css === true) ? "active" : "")}>
-                                    <input type="radio" name="options" id="option3" autocomplete="off" onClick={() => {
+                                    <input type="radio" name="options" id="option3" autoComplete="off" onClick={() => {
                                         this.setState({
                                             editorElement: {
                                                 html: false,
@@ -127,7 +128,7 @@ class Editor extends React.Component {
                                     }} /> CSS
   </label>
                                 <label className={"btn btn-primary " + ((this.state.editorElement.external === true) ? "active" : "")}>
-                                    <input type="radio" name="options" id="option4" autocomplete="off" onClick={() => {
+                                    <input type="radio" name="options" id="option4" autoComplete="off" onClick={() => {
                                         this.setState({
                                             editorElement: {
                                                 html: false,
@@ -162,21 +163,25 @@ class Editor extends React.Component {
                                 </div>
                                 <div className="col-md-2 text-right">
                                     <input type="button" value="Add" className="btn btn-primary " onClick={() => {
-                                        new Promise((resolve, reject) => {
-                                            this.setState({
-                                                editorCodeElement: {
-                                                    ...this.state.editorCodeElement,
-                                                    external: this.state.editorCodeElement.external.concat({
-                                                        type: document.getElementById('ele_type').value,
-                                                        value: document.getElementById('ele_value').value,
-                                                    })
-                                                }
-                                            });
-                                            resolve(true);
-                                        }).then(() => {
-                                            document.getElementById('ele_type').value = '';
-                                            document.getElementById('ele_value').value = '';
-                                        })
+                                        let type = document.getElementById('ele_type');
+                                        let value = document.getElementById('ele_value');
+                                        if (type.value !== '' && value.value !== '') {
+                                            new Promise((resolve, reject) => {
+                                                this.setState({
+                                                    editorCodeElement: {
+                                                        ...this.state.editorCodeElement,
+                                                        external: this.state.editorCodeElement.external.concat({
+                                                            type: type.value,
+                                                            value: value.value,
+                                                        })
+                                                    }
+                                                });
+                                                resolve(true);
+                                            }).then(() => {
+                                                type.value = '';
+                                                value.value = '';
+                                            })
+                                        }
 
 
                                     }} />

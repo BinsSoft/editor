@@ -7,8 +7,7 @@ class Loader extends React.Component {
             <React.Fragment>
                 {this.props.status === true &&
                 <div className="loader-container">
-                    <div>Please wait, untill compiling </div>
-                    <span className="loader"></span>
+                <i className="fa fa-circle-o-notch fa-spin"></i> Please wait, untill compiling
                 </div>
                 }
                 

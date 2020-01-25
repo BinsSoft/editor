@@ -7,7 +7,7 @@ const routeCollection = [
         layout: 'DefaultLayout'
     },
     {
-        path: '/editor',
+        path: '/editor/:code',
         component: Editor,
         layout: 'DefaultLayout'
     },
