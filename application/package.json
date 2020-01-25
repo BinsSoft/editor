@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/BinsSoft/editor/issues"
   },
-  "homepage": "https://github.com/BinsSoft/editor#readme",
+  "homepage": "https://github.com/editor#",
   "dependencies": {
     "bootstrap": "^4.4.1",
     "moment": "^2.24.0",

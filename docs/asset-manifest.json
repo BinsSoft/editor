@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/BinsSoft/editor/static/css/main.d0d54b9a.chunk.css",
-    "main.js": "/BinsSoft/editor/static/js/main.a38bbdf4.chunk.js",
-    "main.js.map": "/BinsSoft/editor/static/js/main.a38bbdf4.chunk.js.map",
-    "runtime-main.js": "/BinsSoft/editor/static/js/runtime-main.ca8bd3e4.js",
-    "runtime-main.js.map": "/BinsSoft/editor/static/js/runtime-main.ca8bd3e4.js.map",
-    "static/css/2.47e06e2e.chunk.css": "/BinsSoft/editor/static/css/2.47e06e2e.chunk.css",
-    "static/js/2.0d22aed0.chunk.js": "/BinsSoft/editor/static/js/2.0d22aed0.chunk.js",
-    "static/js/2.0d22aed0.chunk.js.map": "/BinsSoft/editor/static/js/2.0d22aed0.chunk.js.map",
-    "index.html": "/BinsSoft/editor/index.html",
-    "precache-manifest.9f8424f7fa69d93c29c421f4eb38c2f5.js": "/BinsSoft/editor/precache-manifest.9f8424f7fa69d93c29c421f4eb38c2f5.js",
-    "service-worker.js": "/BinsSoft/editor/service-worker.js",
-    "static/css/2.47e06e2e.chunk.css.map": "/BinsSoft/editor/static/css/2.47e06e2e.chunk.css.map",
-    "static/css/main.d0d54b9a.chunk.css.map": "/BinsSoft/editor/static/css/main.d0d54b9a.chunk.css.map",
-    "static/js/2.0d22aed0.chunk.js.LICENSE": "/BinsSoft/editor/static/js/2.0d22aed0.chunk.js.LICENSE",
-    "static/media/style.css": "/BinsSoft/editor/static/media/cl-blog-banner.c1787c15.png"
+    "main.css": "/editor/static/css/main.fd48fdc2.chunk.css",
+    "main.js": "/editor/static/js/main.a38bbdf4.chunk.js",
+    "main.js.map": "/editor/static/js/main.a38bbdf4.chunk.js.map",
+    "runtime-main.js": "/editor/static/js/runtime-main.aca9f766.js",
+    "runtime-main.js.map": "/editor/static/js/runtime-main.aca9f766.js.map",
+    "static/css/2.47e06e2e.chunk.css": "/editor/static/css/2.47e06e2e.chunk.css",
+    "static/js/2.0d22aed0.chunk.js": "/editor/static/js/2.0d22aed0.chunk.js",
+    "static/js/2.0d22aed0.chunk.js.map": "/editor/static/js/2.0d22aed0.chunk.js.map",
+    "index.html": "/editor/index.html",
+    "precache-manifest.479c9fd6555188802f04c19311c68fee.js": "/editor/precache-manifest.479c9fd6555188802f04c19311c68fee.js",
+    "service-worker.js": "/editor/service-worker.js",
+    "static/css/2.47e06e2e.chunk.css.map": "/editor/static/css/2.47e06e2e.chunk.css.map",
+    "static/css/main.fd48fdc2.chunk.css.map": "/editor/static/css/main.fd48fdc2.chunk.css.map",
+    "static/js/2.0d22aed0.chunk.js.LICENSE": "/editor/static/js/2.0d22aed0.chunk.js.LICENSE",
+    "static/media/style.css": "/editor/static/media/cl-blog-banner.c1787c15.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.ca8bd3e4.js",
+    "static/js/runtime-main.aca9f766.js",
     "static/css/2.47e06e2e.chunk.css",
     "static/js/2.0d22aed0.chunk.js",
-    "static/css/main.d0d54b9a.chunk.css",
+    "static/css/main.fd48fdc2.chunk.css",
     "static/js/main.a38bbdf4.chunk.js"
   ]
 }
