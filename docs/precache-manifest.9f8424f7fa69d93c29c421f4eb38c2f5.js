@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "18b92f6830233b730b860af9d0bd184a",
+    "revision": "306e59db2b7d7e4e81c627c52d8b214e",
     "url": "/BinsSoft/editor/index.html"
   },
   {
-    "revision": "4308f450493553986647",
+    "revision": "caeefb8ac633056d0f39",
     "url": "/BinsSoft/editor/static/css/2.47e06e2e.chunk.css"
   },
   {
-    "revision": "77f5013dfb25c257f0d8",
+    "revision": "95d1528048df406fa220",
     "url": "/BinsSoft/editor/static/css/main.d0d54b9a.chunk.css"
   },
   {
-    "revision": "4308f450493553986647",
-    "url": "/BinsSoft/editor/static/js/2.837df62c.chunk.js"
+    "revision": "caeefb8ac633056d0f39",
+    "url": "/BinsSoft/editor/static/js/2.0d22aed0.chunk.js"
   },
   {
     "revision": "e928fe768baa9832b5bc57eae021f30c",
-    "url": "/BinsSoft/editor/static/js/2.837df62c.chunk.js.LICENSE"
+    "url": "/BinsSoft/editor/static/js/2.0d22aed0.chunk.js.LICENSE"
   },
   {
-    "revision": "77f5013dfb25c257f0d8",
-    "url": "/BinsSoft/editor/static/js/main.114793c1.chunk.js"
+    "revision": "95d1528048df406fa220",
+    "url": "/BinsSoft/editor/static/js/main.a38bbdf4.chunk.js"
   },
   {
     "revision": "4c64a0a58ca5753b2314",

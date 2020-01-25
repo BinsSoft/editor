@@ -45,8 +45,8 @@ class EditorHeader extends React.Component {
                         <Loader />
                     </div>
                     <div className="col-md-3 col-xs-12 text-right">
-                    {/* <span className="header-icon"><i className="fa fa-floppy-o"></i></span>&nbsp;
-                    <span className="header-icon"><i className="fa fa-play"></i></span> */}
+                    <span className="header-icon"><i className="fa fa-floppy-o"></i></span>&nbsp;
+                    <span className="header-icon"><i className="fa fa-play"></i></span>
                     </div>
                 </div>
             </div>

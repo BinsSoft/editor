@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
-import {BrowserRouter as Router}  from 'react-router-dom'; 
+import {BrowserRouter as Router, HashRouter}  from 'react-router-dom'; 
 import RouterLayer from './components/route/RouterLayer';
 import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
@@ -18,9 +18,9 @@ const App = ()=>{
     return (
         <React.Fragment>
             <Provider store={store}>
-            <Router>
+            <HashRouter>
             <RouterLayer/>
-            </Router>
+            </HashRouter>
             </Provider>
         </React.Fragment>
     );
