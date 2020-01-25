@@ -10,7 +10,7 @@ const DefaultLayoutTemplate = ({ children }) => (
             <div className='row'>
                 <div className="col-md-3 col-xs-12">
                     <div className="logo-content">
-                       <Link to={'/'}><img src="/logo.PNG" /></Link>
+                       <Link to={'/'}><img src="logo.PNG" /></Link>
                     </div>
                 </div>
                 <div className="col-md-5 col-xs-12"></div>
