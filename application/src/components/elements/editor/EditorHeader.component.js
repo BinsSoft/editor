@@ -1,5 +1,6 @@
 import React from 'react'
-import Loader from '../../elements/Loader/Loader.component'
+import Loader from '../Loader/Loader.component';
+import {connect} from 'react-redux';
 class EditorHeader extends React.Component {
 
     constructor() {
@@ -7,6 +8,18 @@ class EditorHeader extends React.Component {
         this.state = {
             editMode: false,
             snippet: JSON.parse(sessionStorage.getItem('_sc')),
+            playStatus: false
+        }
+    }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.runInit.action === 'complete') {
+            this.setState({
+                playStatus: false
+            });
+        } else if (nextProps.runInit.action === 'generate') {
+            this.setState({
+                playStatus: true
+            });
         }
     }
     render() {
@@ -46,7 +59,16 @@ class EditorHeader extends React.Component {
                     </div>
                     <div className="col-md-3 col-xs-12 text-right">
                     <span className="header-icon"><i className="fa fa-floppy-o"></i></span>&nbsp;
-                    <span className="header-icon"><i className="fa fa-play"></i></span>
+                    <span className="header-icon" onClick={()=>{
+                        this.props.dispatch({
+                            type: 'SHOW_HIDE',
+                            status: true
+                        });
+                        this.props.dispatch({
+                            type:"RUN_INIT",
+                            status:true
+                        })
+                    }}><i className={'fa '+((this.state.playStatus === false)? 'fa-play': 'fa-pause')}></i></span>
                     </div>
                 </div>
             </div>
@@ -54,5 +76,10 @@ class EditorHeader extends React.Component {
         )
     }
 }
+const mapStateToProps = (state) => {
 
-export default EditorHeader;
+    return {
+        runInit: state.EditorReducer
+    }
+}
+export default connect(mapStateToProps)(EditorHeader);
