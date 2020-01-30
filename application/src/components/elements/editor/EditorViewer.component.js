@@ -31,7 +31,7 @@ class EditorViewer extends React.Component {
                             " " +
                             externalContent +
                             ((codeElement.css) ? "<style>" +
-                                this.state.editorCodeElement.css +
+                            codeElement.css +
                                 "</style>" : "") +
                             ((codeElement.script) ?
                                 "<script>" +
@@ -41,7 +41,7 @@ class EditorViewer extends React.Component {
                         code.close();
                         this.props.dispatch({
                             type:'RUN_COMPLETE',
-                            status:false
+                            data:codeElement
                         })
                     } catch (err) {
                         console.log(err);

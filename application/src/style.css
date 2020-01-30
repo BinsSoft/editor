@@ -4,6 +4,14 @@ body {
 .fade:not(.show) {
     opacity: 1;
 }
+.alert-container {
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+}
+.alert-container .alert-danger {
+background-color: rgba(248, 215, 218, 0.5);
+}
 .hide {
     display: none;
 }
@@ -67,50 +75,71 @@ input.name-control {
 }
 
 .editor-container {
-    height: 90vh;
-    /* border: 1px solid #CCC; */
-    background-color: #1e1e1e;
+    /* height: 70vh; */
+    height: calc( 100% - 50px) ;
 }
 .hidden {
     display: none;
 }
-.editor-code-container  {
+.editor-container .column-one {
+    background-color: #1e1e1e;
+}
+.editor-code-container .nav-tabs li {
+    background-color: #007bff;
+    padding: 7px 10px;
+    margin: 0 2px;
+    border-radius: 3px 3px 0 0;
+}
+.editor-code-container .nav-tabs li.active {
+    background-color: #255486;
+}
+.editor-code-container .nav-tabs li a{
+    color: #FFF;
+    text-decoration: none;
+}
+.editor-code-container .tab-content  {
+    
     position: relative;
     overflow: auto;
     align-items: stretch;
     display: flex;
+    max-height: 83%;
+    flex-direction: column;
 }
-.editor-code-container .form-control {
+.editor-code-container .form-control , .CodeMirror {
     border: none;
     /* border-top: 1px solid #CCC ; */
     margin-top: 5px;
-    background-color: #1e1e1e;
-    color:#CCC;
+    background-color: #1e1e1e !important;
+    color:#CCC !important;
     outline: none;
     resize: none;
     font-size: 12px;
     width:calc(100% - 30px);
+    height: auto;
 
+}
+.editor-element-container .form-control {
+    border-bottom: 1px solid #CCC;
+    border-radius: 0;
+}
+.CodeMirror-gutters {
+    background-color: #1e1e1e !important;
+}
+.react-codemirror2  {
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+}
+.react-codemirror2 .CodeMirror  {
+    height: auto !important;
 }
 .editor-code-container .form-control:focus {
     box-shadow: none;
 }
 
-.editor-code-container::before{
-    /* content: attr(data-line);
-    background-color: black;
-    color: white;
-    white-space: pre;
-    width: 30px; */
-    /* white-space: pre;
-    display: inline-block;
-    text-align: center;
-    background: rgb(37, 37, 38);
-    color: #CCC;
-    position: absolute;
-    width: 20px;
-    font-size: 12px;
-    padding-top: 5px; */
+.editor-element-container .table a {
+    font-size: 14px;
 }
 .iframe-code {
     border: none;
@@ -146,6 +175,7 @@ input.name-control {
     background: rgba(255,255,255,0.5);
     width: 100%;
     height: 100%;
+    top: 0;
 }
 .customModal.show .modalDialog {
     position: absolute;
@@ -182,7 +212,7 @@ input.name-control {
 
 .sign-in-container .nav-tabs li a {
     padding: 10px 20px;
-    background-color: #252526;
+    background-color: #909090;
     color: #FFF;
     margin: 5px 0;
     text-decoration: none;
@@ -199,4 +229,11 @@ input.name-control {
 }
 .sign-in-container .nav-tabs li.active a {
     background-color: #007bff;
+}
+.sign-in-container .right-btn-container {
+    position: absolute;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Modal, Tabs, Tab } from "react-bootstrap";
+import {connect} from 'react-redux';
 class Header extends React.Component {
     constructor() {
         super();
@@ -19,6 +20,9 @@ class Header extends React.Component {
             modalShow: false
         })
     };
+    componentWillReceiveProps(nextProps) {
+        this.setState({modalShow:nextProps.status});
+    }
     render() {
 
         return (
@@ -91,7 +95,12 @@ class Header extends React.Component {
                                         </Tab>
                                     </Tabs>
                                 </div>
-                                <div className="col-md-6 col-xs-12"></div>
+                                <div className="col-md-6 col-xs-12">
+                                    <div className="right-btn-container">
+                                    <button className="btn btn-primary btn-block"><i className="fa fa-github" aria-hidden="true"></i> Signin with Github</button>
+                                    </div>
+                                    
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -102,5 +111,9 @@ class Header extends React.Component {
         );
     }
 }
-
-export default Header;
+const mapStateToProps = (state)=>{
+    return {
+        status : state.AuthReducer
+    }
+}
+export default connect(mapStateToProps)(Header);

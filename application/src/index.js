@@ -9,11 +9,13 @@ import {Provider} from 'react-redux';
 import Flashmessagereducer from './components/elements/FlashMessages/Flashmessages.reducer'
 import LoaderReducer from './components/elements/Loader/Loader.reducer';
 import EditorReducer from './components/elements/editor/Editor.reducer';
+import AuthReducer from './dependency/Auth.reducer';
 const store = createStore( combineReducers (
 {
     Flashmessagereducer,
     LoaderReducer,
-    EditorReducer
+    EditorReducer,
+    AuthReducer
 }
 ));
 const App = ()=>{

@@ -13,7 +13,7 @@ const EditorReducer = (state = [], action) => {
         case "RUN_COMPLETE":
             return state = state = {
                 action: 'complete',
-                data: action.status
+                data: action.data
             }
         default: return state;
     }

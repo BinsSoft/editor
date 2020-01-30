@@ -9,7 +9,7 @@ class Editor extends React.Component {
 
         return (
             <div className="row editor-container">
-                <div className="col-md-6 col-xs-12">
+                <div className="col-md-6 col-xs-12 column-one">
                     <EditorHeader />
                     <br />
                     <EditorSnippet/>

@@ -8,10 +8,13 @@ class EditorHeader extends React.Component {
         this.state = {
             editMode: false,
             snippet: JSON.parse(sessionStorage.getItem('_sc')),
-            playStatus: false
+            playStatus: false,
+            authStatus: false,
         }
     }
     componentWillReceiveProps(nextProps) {
+        this.setState({'authStatus':(nextProps.authStatus.status=== true)?false:true});
+        
         if (nextProps.runInit.action === 'complete') {
             this.setState({
                 playStatus: false
@@ -58,7 +61,21 @@ class EditorHeader extends React.Component {
                         <Loader />
                     </div>
                     <div className="col-md-3 col-xs-12 text-right">
-                    <span className="header-icon"><i className="fa fa-floppy-o"></i></span>&nbsp;
+                    <span className="header-icon" onClick={()=>{
+                        this.props.dispatch({
+                            type: 'GUEST_USER'
+                        });
+                        console.log(this.props.codeData.data)
+                        let snippetData = {
+                            ...this.state.snippet,
+                            ...this.props.codeData.data
+                        } ;
+                        sessionStorage.setItem('_sc', JSON.stringify(snippetData));
+
+                        if (this.state.authStatus === true ) {
+                            
+                        } 
+                    }}><i className="fa fa-floppy-o"></i></span>&nbsp;
                     <span className="header-icon" onClick={()=>{
                         this.props.dispatch({
                             type: 'SHOW_HIDE',
@@ -79,7 +96,9 @@ class EditorHeader extends React.Component {
 const mapStateToProps = (state) => {
 
     return {
-        runInit: state.EditorReducer
+        runInit: state.EditorReducer,
+        authStatus: state.AuthReducer,
+        codeData: state.EditorReducer
     }
 }
 export default connect(mapStateToProps)(EditorHeader);
