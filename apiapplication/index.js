@@ -6,8 +6,10 @@ global.mongoose 	= require('mongoose');
 const  cors = require('cors')
 
 global.fs 			= require("fs");
+global.bodyParser 	= require('body-parser');
 
 require('dotenv').config();
+global.app.use( global.bodyParser.json({limit: '50mb'}) );
 
 global.app.use(cors());
 global.systems = require('./systems');
