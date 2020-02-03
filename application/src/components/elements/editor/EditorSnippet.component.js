@@ -219,6 +219,7 @@ class EditorSnippet extends React.Component {
                             </div>
                         </div>
                         <br />
+                        { this.state.editorCodeElement.external && 
                         <div className="row">
                             <div className="col">
                                 <table className="table">
@@ -245,6 +246,7 @@ class EditorSnippet extends React.Component {
                                 </table>
                             </div>
                         </div>
+                        }
                     </div>
                 
                 
