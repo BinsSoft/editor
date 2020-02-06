@@ -33,6 +33,7 @@ class EditorSnippet extends React.Component {
         if (sessionStorage.getItem('_sc')) {
             let snippetData = JSON.parse(sessionStorage.getItem('_sc'));
             // this.editorInstance.html = snippetData.html;
+            console.log(snippetData);
             this.setState({
                 editorCodeElement: {
                     ...this.state.editorCodeElement,
@@ -42,6 +43,7 @@ class EditorSnippet extends React.Component {
                     external: snippetData.external
                 }
             });
+            this.editorInstance.external = snippetData.external;
         }
     }
     componentWillReceiveProps(nextProps) {
@@ -51,11 +53,13 @@ class EditorSnippet extends React.Component {
             var css = document.getElementById("cssEditor");
             var js = document.getElementById("scriptEditor");
             new Promise((resolve, reject) => {
+                
                 snippetData = {
                     ...this.state.editorCodeElement,
                     html: this.editorInstance.html,
                     css: this.editorInstance.css,
-                    script: this.editorInstance.script
+                    script: this.editorInstance.script,
+                    external: this.editorInstance.external
                 };
                 resolve(true);
             }).then(() => {
@@ -74,92 +78,50 @@ class EditorSnippet extends React.Component {
 
                 <div className="row">
                     <div className="col-md-9">
-                        {/* <div className="btn-group btn-group-toggle" data-toggle="buttons">
-                            <label className={"btn btn-primary " + ((this.state.editorElement.html === true) ? "active" : "")}>
-                                <input type="radio" name="options" id="option1" autoComplete="off" onClick={() => {
-                                    this.setState({
-                                        editorElement: {
-                                            html: true,
-                                            css: false,
-                                            script: false,
-                                            external: false
-                                        }
-                                    })
-                                }} /> HTML
-                                    </label>
-
-                            <label className={"btn btn-primary " + ((this.state.editorElement.script === true) ? "active" : "")}>
-                                <input type="radio" name="options" id="option2" autoComplete="off" onClick={() => {
-                                    this.setState({
-                                        editorElement: {
-                                            html: false,
-                                            css: false,
-                                            script: true,
-                                            external: false
-                                        }
-                                    })
-                                }} /> Script
-                                    </label>
-                            <label className={"btn btn-primary " + ((this.state.editorElement.css === true) ? "active" : "")}>
-                                <input type="radio" name="options" id="option3" autoComplete="off" onClick={() => {
-                                    this.setState({
-                                        editorElement: {
-                                            html: false,
-                                            css: true,
-                                            script: false,
-                                            external: false
-                                        }
-                                    })
-                                }} /> CSS
-                                    </label>
-                            <label className={"btn btn-primary " + ((this.state.editorElement.external === true) ? "active" : "")}>
-                                <input type="radio" name="options" id="option4" autoComplete="off" onClick={() => {
-                                    this.setState({
-                                        editorElement: {
-                                            html: false,
-                                            css: false,
-                                            script: false,
-                                            external: true
-                                        }
-                                    })
-                                }} /> External
-                                    </label>
-                        </div> */}
+                       
                     </div>
                     <div className="col-md-3 text-right">
 
                     </div>
                 </div>
                 <div className="editor-code-container">
-                    <Tabs defaultActiveKey="html" id="uncontrolled-tab-example">
+                    <Tabs defaultActiveKey="html" id="uncontrolled-tab-example" onSelect={(key)=>{
+                        if (document.querySelector('#uncontrolled-tab-example-pane-'+key+' .CodeMirror')) {
+                            setTimeout(()=>{
+                                document.querySelector('#uncontrolled-tab-example-pane-'+key+' .CodeMirror').CodeMirror.refresh();
+                            },400); 
+                        }
+                    }}>
                         <Tab eventKey="html" title="HTML">
                         <CodeMirror
                         value={this.state.editorCodeElement.html}
-                        className={"form-control  "} placeholder="Type your HTML" options={{
-                            mode: 'htmlmixed',
+                        className={"  "} placeholder="Type your HTML" options={{
                             lineNumbers: true,
-                            smartIndent: true,
-                            autofocus: true
+                            styleActiveLine: true,
+                            matchBrackets: true,
+                            theme:'ayu-dark'
                         }} onChange={(editor, data, value) => { this.editorInstance.html = value }} />
                         </Tab>
                         <Tab eventKey="script" title="Script">
 
                         <CodeMirror
                         value={this.state.editorCodeElement.script}
-                        className={"form-control  "} placeholder="Type your Script" options={{
-                            mode: 'javascript',
+                        className={"  "} placeholder="Type your Script" options={{
                             lineNumbers: true,
-                            smartIndent: true
+                            styleActiveLine: true,
+                            matchBrackets: true,
+                            theme:'ayu-dark'
                         }} onChange={(editor, data, value) => { this.editorInstance.script = value }} />
                         </Tab>
                         <Tab eventKey="css" title="CSS">
 
                         <CodeMirror
                         value={this.state.editorCodeElement.css}
-                        className={"form-control "} placeholder="Type your CSS" options={{
-                            mode: 'xml',
+                        className={" "} placeholder="Type your CSS" options={{
                             lineNumbers: true,
-                            smartIndent: true
+                            styleActiveLine: true,
+                            matchBrackets: true,
+                            theme:'ayu-dark'
                         }} onChange={(editor, data, value) => { this.editorInstance.css = value }} />
                         </Tab>
 
@@ -185,15 +147,18 @@ class EditorSnippet extends React.Component {
                                         let regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
                                         if (regexp.test(value.value)) {
                                             new Promise((resolve, reject) => {
+                                                let external = this.state.editorCodeElement.external||[];
+                                                external = external.concat({
+                                                    type: type.value,
+                                                    value: value.value,
+                                                });
                                                 this.setState({
                                                     editorCodeElement: {
                                                         ...this.state.editorCodeElement,
-                                                        external: this.state.editorCodeElement.external.concat({
-                                                            type: type.value,
-                                                            value: value.value,
-                                                        })
+                                                        external: external
                                                     }
                                                 });
+                                                this.editorInstance.external = external;
                                                 resolve(true);
                                             }).then(() => {
                                                 type.value = '';

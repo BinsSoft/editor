@@ -82,7 +82,8 @@ input.name-control {
     display: none;
 }
 .editor-container .column-one {
-    background-color: #1e1e1e;
+    /* background-color: #1e1e1e; */
+    background-color: #0a0e14;
 }
 .editor-code-container .nav-tabs li {
     background-color: #007bff;
@@ -108,24 +109,19 @@ input.name-control {
 }
 .editor-code-container .form-control , .CodeMirror {
     border: none;
-    /* border-top: 1px solid #CCC ; */
     margin-top: 5px;
-    background-color: #1e1e1e !important;
-    color:#CCC !important;
     outline: none;
     resize: none;
     font-size: 12px;
     width:calc(100% - 30px);
     height: auto;
-
+    caret-color: #FFF;
 }
 .editor-element-container .form-control {
     border-bottom: 1px solid #CCC;
     border-radius: 0;
 }
-.CodeMirror-gutters {
-    background-color: #1e1e1e !important;
-}
+
 .react-codemirror2  {
     display: flex;
     align-items: stretch;
@@ -172,12 +168,13 @@ input.name-control {
 .customModal.show {
     position: absolute;
     z-index: 99;
-    background: rgba(255,255,255,0.5);
+    background: rgba(0,0,0,0.5);
     width: 100%;
     height: 100%;
     top: 0;
 }
 .customModal.show .modalDialog {
+    /* outline: 100vw rgba(0,0,0,0.5) solid; */
     position: absolute;
     left: 50%;
     top: 50%;

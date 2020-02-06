@@ -62,10 +62,9 @@ class EditorHeader extends React.Component {
                     </div>
                     <div className="col-md-3 col-xs-12 text-right">
                     <span className="header-icon" onClick={()=>{
-                        this.props.dispatch({
-                            type: 'GUEST_USER'
-                        });
-                        console.log(this.props.codeData.data)
+                        // this.props.dispatch({
+                        //     type: 'GUEST_USER'
+                        // });
                         let snippetData = {
                             ...this.state.snippet,
                             ...this.props.codeData.data

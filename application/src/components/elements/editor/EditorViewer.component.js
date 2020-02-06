@@ -13,15 +13,16 @@ class EditorViewer extends React.Component {
 
                 let externalContent = '';
                 let codeElement = this.props.codeData.data;
-
                 if (codeElement.type === 'snippet') {
-                    codeElement.external.map((item) => {
-                        if (item.type == 'script') {
-                            externalContent += `<script src="` + item.value + `"></script>`
-                        } else if (item.type == 'css') {
-                            externalContent += `<link rel="stylesheet" href="` + item.value + `"/>`
-                        }
-                    });
+                    if (codeElement.external) {
+                        codeElement.external.map((item) => {
+                            if (item.type == 'script') {
+                                externalContent += `<script src="` + item.value + `"></script>`
+                            } else if (item.type == 'css') {
+                                externalContent += `<link rel="stylesheet" href="` + item.value + `"/>`
+                            }
+                        });
+                    }
                     try {
 
 
