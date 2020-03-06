@@ -18,7 +18,7 @@ module.exports = {
 	},
 	signin : function(req, res) {
         var postData = req.body;
-		global.models.users.checkLogin(postElements, (checkData) => {
+		global.models.users.checkLogin(postData, (checkData) => {
 			if (checkData.status == true) {
 				res.send(global.config.app.send("AC-SI-0001", {"user": checkData.user}));
 			} else {
