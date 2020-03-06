@@ -1,29 +1,24 @@
 
 
 module.exports = {
-    signup : function(req, res) {
+    signUp : function(req, res) {
 		var postData = req.body;
-		postData.phoneno = (postData.phoneno).toString();
-		global.systems.model.expense.users.checkPhoneExist(postData.phoneno, (checkData)=>{
+		
+		global.models.users.checkEmailExist(postData.email, (checkData)=>{
 			if(checkData) {
-				res.send({status : 0, message : 'Phone no is exist please try other one'});
+				res.send(global.config.app.send("AC-SU-0001",'Email  is exist please try other one',false));
+				
 			} else {
 
-				global.systems.model.expense.users.insert(postData, (data)=>{
-					res.send({status : 1, message : 'success'});
+				global.models.users.saveUser(postData, (data)=>{
+					res.send(global.config.app.send("AC-SU-0002", "Success"));
 				})
 			}
 		})
 	},
 	signin : function(req, res) {
         var postData = req.body;
-        console.log(postData);
-		var postElements = {
-			username : postData.username,
-			password : postData.password
-        }
-        
-		global.models.Admin.checkLogin(postElements, (checkData) => {
+		global.models.users.checkLogin(postElements, (checkData) => {
 			if (checkData.status == true) {
 				res.send(global.config.app.send("AC-SI-0001", {"user": checkData.user}));
 			} else {
@@ -32,7 +27,7 @@ module.exports = {
 		});
 	},
 	resetPassword : function(req, res) {
-		global.models.Admin.resetPassword(req.body, (responsedata)=>{
+		global.models.users.resetPassword(req.body, (responsedata)=>{
 			res.send({status:true});
 		})
 	}
