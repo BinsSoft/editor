@@ -1,21 +1,29 @@
 'use strict';
 const Schema = global.mongoose.Schema;
-const table = 'admin';
-const schema = new Schema(
-		    { username : String }, 
-		    { password : String }
-		);
+const table = 'users';
+const schema = new Schema({},
+	{strict:false }
+  );
 const model = global.mongoose.model(table, schema);
-const Admin = {
-	checkPhoneExist : function(phoneno, callback) {
-		model.findOne({phoneno:phoneno})
+const Users = {
+
+	saveUser: (user, callback) =>{
+		// console.log(user);
+		user = new model(user);
+		user.save((err, user)=>{
+			if (err) return console.error(err);
+			callback(user)
+		})
+	},
+	checkEmailExist : function(email, callback) {
+		model.findOne({email:email})
 		.exec()
 		.then(function(data){
 			callback(data);
 		})
 	},
 	checkLogin : function(postData, callback) {
-		model.findOne({username: postData.username, password: postData.password}).exec().then(function(data){
+		model.findOne({email: postData.email, password: postData.password}).exec().then(function(data){
 			if(data) {
 				callback({status:true, user : data});
 			} else {
@@ -36,4 +44,4 @@ const Admin = {
 	}
 };
 
-module.exports = Admin;
+module.exports = Users;
