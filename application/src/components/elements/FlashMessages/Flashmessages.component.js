@@ -25,7 +25,7 @@ class Flashmessages extends React.Component {
     render() {
 
         return (
-            <React.Fragment>
+            <div className="alert-container">
                 {this.state.message && this.state.message.success &&
                     <div className="alert alert-success text-center">
                         {this.state.message.success}
@@ -36,7 +36,7 @@ class Flashmessages extends React.Component {
                         {this.state.message.error}
                     </div>
                 }
-            </React.Fragment>
+            </div>
         );
     }
 }

@@ -21,9 +21,10 @@
   "bugs": {
     "url": "https://github.com/BinsSoft/editor/issues"
   },
-  "homepage": "https://github.com/BinsSoft/editor#readme",
+  "homepage": "https://github.com/editor#",
   "dependencies": {
     "bootstrap": "^4.4.1",
+    "codemirror": "^5.51.0",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",

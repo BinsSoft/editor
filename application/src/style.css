@@ -1,6 +1,20 @@
 body {
     background-color: rgb(37, 37, 38);
 }
+.fade:not(.show) {
+    opacity: 1;
+}
+.alert-container {
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+}
+.alert-container .alert-danger {
+background-color: rgba(248, 215, 218, 0.5);
+}
+.hide {
+    display: none;
+}
 .row {
     margin: 0;
 }
@@ -61,56 +75,74 @@ input.name-control {
 }
 
 .editor-container {
-    height: 90vh;
-    /* border: 1px solid #CCC; */
-    background-color: #1e1e1e;
+    /* height: 70vh; */
+    height: calc( 100% - 50px) ;
 }
 .hidden {
     display: none;
 }
-.editor-code-container  {
-    height: 80vh;
+.editor-container .column-one {
+    /* background-color: #1e1e1e; */
+    background-color: #0a0e14;
+}
+.editor-code-container .nav-tabs li {
+    background-color: #007bff;
+    padding: 7px 10px;
+    margin: 0 2px;
+    border-radius: 3px 3px 0 0;
+}
+.editor-code-container .nav-tabs li.active {
+    background-color: #255486;
+}
+.editor-code-container .nav-tabs li a{
+    color: #FFF;
+    text-decoration: none;
+}
+.editor-code-container .tab-content  {
+    
     position: relative;
     overflow: auto;
     align-items: stretch;
     display: flex;
+    max-height: 83%;
+    flex-direction: column;
 }
-.editor-code-container div.form-control {
+.editor-code-container .form-control , .CodeMirror {
     border: none;
-    /* border-top: 1px solid #CCC ; */
     margin-top: 5px;
-    background-color: #1e1e1e;
-    color:#CCC;
     outline: none;
     resize: none;
     font-size: 12px;
     width:calc(100% - 30px);
-
+    height: auto;
+    caret-color: #FFF;
 }
-.editor-code-container div.form-control:focus {
+.editor-element-container .form-control {
+    border-bottom: 1px solid #CCC;
+    border-radius: 0;
+}
+
+.react-codemirror2  {
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+}
+.react-codemirror2 .CodeMirror  {
+    height: auto !important;
+}
+.editor-code-container .form-control:focus {
     box-shadow: none;
 }
 
-.editor-code-container::before{
-    /* content: attr(data-line);
-    background-color: black;
-    color: white;
-    white-space: pre;
-    width: 30px; */
-    /* white-space: pre;
-    display: inline-block;
-    text-align: center;
-    background: rgb(37, 37, 38);
-    color: #CCC;
-    position: absolute;
-    width: 20px;
-    font-size: 12px;
-    padding-top: 5px; */
+.editor-element-container .table a {
+    font-size: 14px;
 }
 .iframe-code {
     border: none;
     border-left: 1px solid #CCC;
     background-color: #CCC;
+    width: 100%;
+    height: 100%;
 }
 .btn {
     border-radius: 0px;
@@ -132,3 +164,73 @@ input.name-control {
 }
 
 /* end loader */
+
+.customModal.show {
+    position: absolute;
+    z-index: 99;
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+.customModal.show .modalDialog {
+    /* outline: 100vw rgba(0,0,0,0.5) solid; */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background: #FFF;
+    padding: 10px;
+    border-radius: 5px;
+    min-width: 50%;
+    min-height: 300px;
+    max-height: 300px;
+    overflow: auto;
+}
+.customModal.show .modalDialog .modalHead .closeSpan {
+    position: absolute;
+    right: 0;
+    top: 0px;
+    z-index: 99;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.customModal.show .modalDialog.lg {
+    width: 80%;
+}
+.customModal.show .modalDialog.sm {
+    width: 30%;
+}
+.sign-in-container .first-coloum {
+    border-right: 1px solid #CCC;
+}
+
+.sign-in-container .nav-tabs li a {
+    padding: 10px 20px;
+    background-color: #909090;
+    color: #FFF;
+    margin: 5px 0;
+    text-decoration: none;
+    display: block;
+}
+.sign-in-container .nav-tabs li {
+    width: 50%;
+}
+.sign-in-container .nav-tabs li:first-of-type a{
+    border-radius: 5px 0 0 0;
+}
+.sign-in-container .nav-tabs li:last-of-type a{
+    border-radius: 0 5px  0 0;
+}
+.sign-in-container .nav-tabs li.active a {
+    background-color: #007bff;
+}
+.sign-in-container .right-btn-container {
+    position: absolute;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
