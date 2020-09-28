@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/editor#",
   "dependencies": {
+    "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "codemirror": "^5.51.0",
     "moment": "^2.24.0",

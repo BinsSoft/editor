@@ -4,6 +4,9 @@ const apiPrefix      = '/api/1.0';
 
 router.post(apiPrefix+"/signin",  global.controllers.AuthController.signin);
 router.post(apiPrefix+"/signup",  global.controllers.AuthController.signUp);
+
+
+router.post(apiPrefix+"/upload-file",  global.controllers.AuthController.uploadFile);
 // router.get(apiPrefix+"/getAllUser/", AuthMiddleware.verifySessionToken,  global.controllers.UserController.getAllUser);
 // router.get(apiPrefix+"/allUserByUserType/:usertype", AuthMiddleware.verifySessionToken,  global.controllers.UserController.allUserByUserType);
 // router.get(apiPrefix+"/userById/:userId", AuthMiddleware.verifySessionToken,  global.controllers.UserController.userById);

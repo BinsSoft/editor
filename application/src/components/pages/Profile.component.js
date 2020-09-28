@@ -1,6 +1,6 @@
 import React from 'react';
 import APIService from '../../dependency/api.service';
-class Home extends React.Component {
+class Profile extends React.Component {
     
     handelClickTonav = ()=>{
         let snippetNumber = new Date().getTime();
@@ -36,4 +36,4 @@ class Home extends React.Component {
         );
     }
 }
-export default Home;
+export default Profile;

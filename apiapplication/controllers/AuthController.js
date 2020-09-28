@@ -30,5 +30,12 @@ module.exports = {
 		global.models.users.resetPassword(req.body, (responsedata)=>{
 			res.send({status:true});
 		})
+	},
+
+	uploadFile: function(req, res) {
+		let data = req.body;
+		setTimeout(()=>{
+			res.send(data);
+		},3000);
 	}
 }
