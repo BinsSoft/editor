@@ -1,0 +1,35 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  .menu-container {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    .search-content {
+      margin-right: 20px;
+      input {
+        font-family: Roboto-Medium, sans-serif;
+        width: 300px;
+        padding: 10px;
+        background: transparent;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        color:#FFF;
+        &:focus {
+          width: 500px;
+        }
+      }
+    }
+    .btn-content {
+      button {
+        background: #47cf73;
+        border: none;
+        padding: 10px 20px;
+        color: #000;
+        border-radius: 5px;
+        font-family: Roboto-Medium, sans-serif;
+        font-size: 16px;
+      }
+    }
+  }
+}
