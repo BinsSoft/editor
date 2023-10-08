@@ -1,13 +1,68 @@
-<div class="header-container">
+<div class="header-container" [ngClass]="{'inner-header': innerHeader}">
   <div class="logo-container">
-    <img src="/assets/logo.png"/>
+    <img src="/assets/logo.png" [routerLink]="['/']"/>
   </div>
   <div class="menu-container">
     <div class="search-content">
       <input type="text" placeholder="Search...">
     </div>
     <div class="btn-content">
-      <button>Sign In</button>
+      <button (click)="toggleLogin()">Log In</button>
+    </div>
+  </div>
+</div>
+<div class="login-container" [ngClass]="{'slide-down':showLogin==true, 'slide-up': showLogin==false}">
+  <div class="login-main-content">
+    <div class="social-content">
+      <h2>Log In</h2>
+      <div class="social-btn-content">
+        <button><i class="fa fa-google"></i> Login with Google</button>
+        <button><i class="fa fa-github"></i> Login with Github</button>
+      </div>
+    </div>
+    <div class="manual-content">
+      <div class="login-content" *ngIf="isLogin">
+        <form>
+          <div class="form-row">
+            <label>Email</label>
+            <input type="email" class="form-input"/>
+          </div>
+          <div class="form-row">
+            <label>Password</label>
+            <input type="password" class="form-input"/>
+          </div>
+          <div class="form-row action-row">
+            <button class="btn">Log In</button>
+            <a href="#">Forgot Password?</a>
+          </div>
+
+        </form>
+      </div>
+      <div class="signup-content" *ngIf="!isLogin">
+        <form>
+          <div class="form-row">
+            <label>Name</label>
+            <input type="text" class="form-input"/>
+          </div>
+          <div class="form-row">
+            <label>Email</label>
+            <input type="email" class="form-input"/>
+          </div>
+          <div class="form-row">
+            <label>Password</label>
+            <input type="password" class="form-input"/>
+          </div>
+          <div class="form-row action-row">
+            <button class="btn">Sign up</button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+    <div class="login-footer">
+      <div *ngIf="isLogin">Need an account? <a href="#" (click)="isLogin=false">Sign up now!</a></div>
+      <div *ngIf="!isLogin">Back to <a href="#" (click)="isLogin=true">Login now!</a></div>
     </div>
   </div>
 </div>

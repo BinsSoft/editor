@@ -1,6 +1,24 @@
 <div class="editor-container">
   <app-header></app-header>
+  <div class="editor-menu-content">
+    <button> <i class="fa fa-heart"></i></button>
+    <button> <i class="fa fa-share"></i> Share</button>
+    <button> <i class="fa fa-save"></i> Save</button>
+    <button (click)="action('run')"> <i class="fa fa-play"></i> Run</button>
+    <button> <i class="fa fa-arrows-alt"></i> Full Screen</button>
+  </div>
   <div class="editor-content">
+    <div class="editor-left-content">
 
+      <ngs-code-editor
+        style="height:100%;"
+        [theme]="theme"
+        [codeModel]="codeModel"
+        [options]="options">
+      </ngs-code-editor>
+    </div>
+    <div class="editor-right-content">
+        <iframe class="editor-frame" #frame></iframe>
+    </div>
   </div>
 </div>

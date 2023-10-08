@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+import {CommonService} from "../services/common.service";
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router, private  commonService: CommonService) { }
 
   ngOnInit(): void {
   }
 
+  navigateEditor() {
+    this.router.navigate(["editor", this.commonService.generateTempEditorId()])
+  }
 }

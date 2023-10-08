@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { EditorComponent } from './editor/editor.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {CodeEditorModule} from "@ngstack/code-editor";
 
 @NgModule({
   declarations: [
@@ -16,7 +18,10 @@ import { EditorComponent } from './editor/editor.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CodeEditorModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
