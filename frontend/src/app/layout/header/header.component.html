@@ -11,7 +11,7 @@
     </div>
   </div>
 </div>
-<div class="login-container" [ngClass]="{'slide-down':showLogin==true, 'slide-up': showLogin==false}" (click)="toggleLogin()">
+<div class="login-container" [ngClass]="{'slide-down':showLogin==true, 'slide-up': showLogin==false}">
   <div class="login-wrapper" >
 
     <div class="login-main-content">
@@ -35,7 +35,7 @@
             </div>
             <div class="form-row action-row">
               <button class="btn">Log In</button>
-              <a href="#" (click)="togglePopup('forgotpassword')">Forgot Password?</a>
+              <a href="javascript:void(0)" (click)="togglePopup('forgotpassword')">Forgot Password?</a>
             </div>
 
           </form>
@@ -83,6 +83,6 @@
       </div>
     </div>
   </div>
-
+  <div class="login-back"  (click)="toggleLogin()"></div>
 
 </div>

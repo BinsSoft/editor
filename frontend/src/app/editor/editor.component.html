@@ -1,11 +1,35 @@
 <div class="editor-container">
   <app-header></app-header>
   <div class="editor-menu-content">
-    <button> <i class="fa fa-heart"></i></button>
-    <button> <i class="fa fa-share"></i> Share</button>
-    <button (click)="action('save')"> <i class="fa fa-save"></i> Save</button>
-    <button (click)="action('run')"> <i class="fa fa-play"></i> Run</button>
-    <button> <i class="fa fa-arrows-alt"></i> Full Screen</button>
+    <div class="btn-div"> <label class="btn-label"><i class="fa fa-heart"></i></label></div>
+    <div class="btn-div"> <label class="btn-label"><i class="fa fa-share"></i> Share</label></div>
+    <div class="btn-div" (click)="action('run')">
+      <label class="btn-label">
+        <i class="fa fa-play"></i> Run
+      </label>
+      </div>
+    <div class="btn-div" >
+      <label class="btn-label" (click)="action('save')"><i class="fa fa-save"></i> Save</label>
+      <div class="save-form-container" [ngClass]="{'slide-down':showSave==true, 'slide-up': showSave==false}">
+        <form>
+          <div class="form-row">
+            <label>Title</label>
+            <input type="text" class="form-control" />
+          </div>
+          <div class="form-row">
+            <label>Description</label>
+            <textarea class="form-control"></textarea>
+          </div>
+          <div class="form-row btn-row">
+            <button>Save</button>
+          </div>
+        </form>
+        <div class="save-back" (click)="toggleSave()"></div>
+      </div>
+
+    </div>
+
+    <div class="btn-div"> <label class="btn-label"><i class="fa fa-arrows-alt"></i> Full Screen</label></div>
   </div>
   <div class="editor-content">
     <div class="editor-left-content">

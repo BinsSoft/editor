@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   constructor(private commonService: CommonService) {
     this.commonService.needLogin.subscribe((response:any)=>{
       this.showLogin = true;
+      this.popupType = 'login';
     })
   }
 
@@ -23,6 +24,7 @@ export class HeaderComponent implements OnInit {
   showLogin:any = null;
   toggleLogin() {
       this.showLogin = (!this.showLogin);
+      if (this.showLogin) {  this.popupType = 'login'; }
   }
 
   togglePopup(type: string) {

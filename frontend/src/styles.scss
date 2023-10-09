@@ -22,3 +22,34 @@ body {
   margin: 0;
   padding: 0;
 }
+
+@keyframes slide-down {
+  0% {
+    visibility: hidden;
+    height: 0;
+  }
+
+  95% {
+    visibility: visible;
+    height: 70vh;
+  }
+
+  /* Set height to 'auto' after animation for spacing showing form-invalid feedback message */
+  100% {
+    visibility: visible;
+    height: 100vh;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    visibility: visible;
+    height: 100vh;
+  }
+
+  to {
+    visibility: hidden;
+    height: 0;
+  }
+}
+

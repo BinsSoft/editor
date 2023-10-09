@@ -2,18 +2,94 @@
   margin: 10px 0;
   display: flex;
   justify-content: center;
-  button {
+  .btn-div {
     background: #47cf73;
     border: none;
-    padding: 10px 20px;
     color: #000;
     border-radius: 5px;
     font-family: Roboto-Medium, sans-serif;
     font-size: 16px;
     margin: 0 10px;
     cursor: pointer;
+    position: relative;
+
     &:first-child {
       margin-left: 0;
+    }
+    .btn-label {
+      display: block;
+      padding: 10px 20px;
+    }
+
+    .save-form-container {
+      position: absolute;
+
+      z-index: 9;
+      top: 40px;
+      left: 0;
+
+      width: 20vw;
+
+      height: 0;
+      overflow: hidden;
+      visibility: hidden;
+
+      &.slide-down {
+        animation: slide-down 0.3s linear both;
+      }
+
+      &.slide-up {
+        animation: slide-up 0.3s linear both;
+      }
+
+      form {
+        position: absolute;
+        z-index: 99;
+        background: #343a46;
+        padding: 10px;
+        width: 95%;
+        .form-row{
+          display: flex;
+          flex-direction: column;
+          padding: 10px;
+          &.btn-row {
+            flex-direction: row;
+          }
+          label {
+            color: #CCC;
+            font-size: 12px;
+            padding: 5px 0;
+
+          }
+          .form-control {
+            padding: 5px;
+            background: #00000026;
+            border: 1px solid rgb(97 92 92);
+          }
+          button {
+            background: #47cf73;
+            width: 70px;
+            border: none;
+            color: #000;
+            border-radius: 5px;
+            font-family: Roboto-Medium, sans-serif;
+            padding: 8px;
+            margin-right: 10px;
+            &.cancel {
+              background: #f76868;
+            }
+          }
+        }
+
+      }
+      .save-back {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 9;
+        width: 100%;
+      }
     }
 
   }

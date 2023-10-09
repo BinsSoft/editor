@@ -56,7 +56,6 @@
 }
 .login-container {
   //min-height: 70vh;
-  background: transparent;
   border: 1px solid;
   position: fixed;
   width: 100%;
@@ -73,11 +72,21 @@
     animation: slide-up 0.3s linear both;
   }
 
+  .login-back {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 9;
+    width: 100%;
+  }
+
   .login-wrapper {
     background: #073355;
     min-height: 70vh;
-    position: relative;
-
+    position: absolute;
+    width: 100%;
+    z-index: 99;
     //position: fixed;
     //width: 100%;
     //z-index: 99;
@@ -183,32 +192,4 @@
 }
 
 
-@keyframes slide-down {
-  0% {
-    visibility: hidden;
-    height: 0;
-  }
 
-  95% {
-    visibility: visible;
-    height: 70vh;
-  }
-
-  /* Set height to 'auto' after animation for spacing showing form-invalid feedback message */
-  100% {
-    visibility: visible;
-    height: 100vh;
-  }
-}
-
-@keyframes slide-up {
-  from {
-    visibility: visible;
-    height: 100vh;
-  }
-
-  to {
-    visibility: hidden;
-    height: 0;
-  }
-}

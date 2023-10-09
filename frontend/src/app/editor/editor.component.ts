@@ -40,6 +40,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     },
     automaticLayout: true
   };
+  showSave:any = null;
   constructor(private ar: ActivatedRoute, private commonService: CommonService) {
     this.ar.params.subscribe((data:any)=>{
       this.editorId = data.tempId;
@@ -74,12 +75,17 @@ export class EditorComponent implements OnInit, OnDestroy {
         this.commonService.updateTempEditorContentInStorage(this.editorId, this.codeModel.value)
         break;
       case "save":
-        this.commonService.needLogin.emit(true);
+        this.toggleSave();
+        // this.commonService.needLogin.emit(true);
         break;
     }
   }
 
   ngOnDestroy(): void {
     this.commonService.removeTempEditorContent();
+  }
+
+  toggleSave() {
+    this.showSave = (!this.showSave);
   }
 }
