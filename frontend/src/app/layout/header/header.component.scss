@@ -55,8 +55,9 @@
   }
 }
 .login-container {
-  background: #073355;
   //min-height: 70vh;
+  background: transparent;
+  border: 1px solid;
   position: fixed;
   width: 100%;
   z-index: 99;
@@ -72,99 +73,110 @@
     animation: slide-up 0.3s linear both;
   }
 
-  .login-main-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 50%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    .social-content {
-      border-right: 1px solid #565656;
-      min-height: 50%;
-      width: 48%;
-      h2 {
-        color: #FFFFFF;
-        font-family: Roboto-Black, sans-serif;
-        font-size: 65px;
-        padding: 0;
-        margin: 0;
-      }
-      .social-btn-content {
-        display: flex;
-        flex-direction: column;
-        width: 80%;
-        margin-top: 50px;
-        button {
-          margin: 10px 0;
-          padding: 20px;
-          font-size: 20px;
-          background: #194364;
+  .login-wrapper {
+    background: #073355;
+    min-height: 70vh;
+    position: relative;
+
+    //position: fixed;
+    //width: 100%;
+    //z-index: 99;
+
+    .login-main-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      width: 50%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      .social-content {
+        border-right: 1px solid #565656;
+        min-height: 50%;
+        width: 48%;
+        h2 {
           color: #FFFFFF;
-          border-radius: 10px;
-          cursor: pointer;
-          border: 1px solid #0d2b42;
-          &:hover{
-            background: #004174;
-          }
+          font-family: Roboto-Black, sans-serif;
+          font-size: 65px;
+          padding: 0;
+          margin: 0;
         }
-      }
-    }
-    .manual-content {
-      //border: 1px solid;
-      width: 48%;
-      .login-content,
-      .signup-content{
-        width: 80%;
-        margin: 100px 0 0 50px;
-        .form-row {
-          font-family: Roboto-Medium, sans-serif;
-          color: #FFFFFF;
+        .social-btn-content {
           display: flex;
           flex-direction: column;
-          margin: 10px 0;
-          label {
-            padding: 10px 0;
-            font-size: 17px;
-          }
-          input.form-input {
-            padding: 15px;
-          }
+          width: 80%;
+          margin-top: 50px;
           button {
-            font-family: Roboto-Medium, sans-serif;
-            font-size: 17px;
-            background: #47cf73;
-            border-radius: 5px;
+            margin: 10px 0;
+            padding: 20px;
+            font-size: 20px;
+            background: #194364;
+            color: #FFFFFF;
+            border-radius: 10px;
             cursor: pointer;
             border: 1px solid #0d2b42;
-            width: 100px;
-            padding: 10px;
-            margin: 10px 0;
-          }
-          &.action-row {
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            a {
-              color: #76daff;
-              text-decoration: none;
+            &:hover{
+              background: #004174;
             }
           }
         }
       }
-    }
-    .login-footer {
-      font-family: Roboto-Regular, sans-serif;
-      text-align: center;
-      color: #FFF;
-      width: 80%;
-      margin: 30px 0;
-      a {
-        color: #76daff;
-        text-decoration: none;
+      .manual-content {
+        //border: 1px solid;
+        width: 48%;
+        .login-content,
+        .signup-content,
+        .forgot-password-content{
+          width: 80%;
+          margin: 100px 0 0 50px;
+          .form-row {
+            font-family: Roboto-Medium, sans-serif;
+            color: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+            margin: 10px 0;
+            label {
+              padding: 10px 0;
+              font-size: 17px;
+            }
+            input.form-input {
+              padding: 15px;
+            }
+            button {
+              font-family: Roboto-Medium, sans-serif;
+              font-size: 17px;
+              background: #47cf73;
+              border-radius: 5px;
+              cursor: pointer;
+              border: 1px solid #0d2b42;
+              width: 100px;
+              padding: 10px;
+              margin: 10px 0;
+            }
+            &.action-row {
+              flex-direction: row;
+              justify-content: space-between;
+              align-items: center;
+              a {
+                color: #76daff;
+                text-decoration: none;
+              }
+            }
+          }
+        }
+      }
+      .login-footer {
+        font-family: Roboto-Regular, sans-serif;
+        text-align: center;
+        color: #FFF;
+        width: 80%;
+        margin: 30px 0;
+        a {
+          color: #76daff;
+          text-decoration: none;
+        }
       }
     }
   }
@@ -185,14 +197,14 @@
   /* Set height to 'auto' after animation for spacing showing form-invalid feedback message */
   100% {
     visibility: visible;
-    height: 70vh;
+    height: 100vh;
   }
 }
 
 @keyframes slide-up {
   from {
     visibility: visible;
-    height: 70vh;
+    height: 100vh;
   }
 
   to {

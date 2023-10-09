@@ -73,6 +73,9 @@ export class EditorComponent implements OnInit, OnDestroy {
         codeFrame.close();
         this.commonService.updateTempEditorContentInStorage(this.editorId, this.codeModel.value)
         break;
+      case "save":
+        this.commonService.needLogin.emit(true);
+        break;
     }
   }
 

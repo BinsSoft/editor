@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {CommonService} from "../../services/common.service";
 
 @Component({
   selector: 'app-header',
@@ -9,8 +10,12 @@ export class HeaderComponent implements OnInit {
 
   @Input('innerHeader')innerHeader: boolean = true;
 
-  isLogin: boolean = true;
-  constructor() { }
+  popupType: string = 'login';
+  constructor(private commonService: CommonService) {
+    this.commonService.needLogin.subscribe((response:any)=>{
+      this.showLogin = true;
+    })
+  }
 
   ngOnInit(): void {
   }
@@ -20,4 +25,7 @@ export class HeaderComponent implements OnInit {
       this.showLogin = (!this.showLogin);
   }
 
+  togglePopup(type: string) {
+      this.popupType = type;
+  }
 }

@@ -11,58 +11,78 @@
     </div>
   </div>
 </div>
-<div class="login-container" [ngClass]="{'slide-down':showLogin==true, 'slide-up': showLogin==false}">
-  <div class="login-main-content">
-    <div class="social-content">
-      <h2>Log In</h2>
-      <div class="social-btn-content">
-        <button><i class="fa fa-google"></i> Login with Google</button>
-        <button><i class="fa fa-github"></i> Login with Github</button>
-      </div>
-    </div>
-    <div class="manual-content">
-      <div class="login-content" *ngIf="isLogin">
-        <form>
-          <div class="form-row">
-            <label>Email</label>
-            <input type="email" class="form-input"/>
-          </div>
-          <div class="form-row">
-            <label>Password</label>
-            <input type="password" class="form-input"/>
-          </div>
-          <div class="form-row action-row">
-            <button class="btn">Log In</button>
-            <a href="#">Forgot Password?</a>
-          </div>
+<div class="login-container" [ngClass]="{'slide-down':showLogin==true, 'slide-up': showLogin==false}" (click)="toggleLogin()">
+  <div class="login-wrapper" >
 
-        </form>
+    <div class="login-main-content">
+      <div class="social-content">
+        <h2>Log In</h2>
+        <div class="social-btn-content">
+          <button><i class="fa fa-google"></i> Login with Google</button>
+          <button><i class="fa fa-github"></i> Login with Github</button>
+        </div>
       </div>
-      <div class="signup-content" *ngIf="!isLogin">
-        <form>
-          <div class="form-row">
-            <label>Name</label>
-            <input type="text" class="form-input"/>
-          </div>
-          <div class="form-row">
-            <label>Email</label>
-            <input type="email" class="form-input"/>
-          </div>
-          <div class="form-row">
-            <label>Password</label>
-            <input type="password" class="form-input"/>
-          </div>
-          <div class="form-row action-row">
-            <button class="btn">Sign up</button>
-          </div>
+      <div class="manual-content">
+        <div class="login-content" *ngIf="popupType == 'login'">
+          <form>
+            <div class="form-row">
+              <label>Email</label>
+              <input type="email" class="form-input"/>
+            </div>
+            <div class="form-row">
+              <label>Password</label>
+              <input type="password" class="form-input"/>
+            </div>
+            <div class="form-row action-row">
+              <button class="btn">Log In</button>
+              <a href="#" (click)="togglePopup('forgotpassword')">Forgot Password?</a>
+            </div>
 
-        </form>
+          </form>
+        </div>
+        <div class="signup-content" *ngIf="popupType == 'signup'">
+          <form>
+            <div class="form-row">
+              <label>Name</label>
+              <input type="text" class="form-input"/>
+            </div>
+            <div class="form-row">
+              <label>Email</label>
+              <input type="email" class="form-input"/>
+            </div>
+            <div class="form-row">
+              <label>Password</label>
+              <input type="password" class="form-input"/>
+            </div>
+            <div class="form-row action-row">
+              <button class="btn">Sign up</button>
+            </div>
+
+          </form>
+        </div>
+        <div class="forgot-password-content" *ngIf="popupType == 'forgotpassword'">
+          <form>
+
+            <div class="form-row">
+              <label>Email</label>
+              <input type="email" class="form-input"/>
+            </div>
+
+            <div class="form-row action-row">
+              <button class="btn">Send</button>
+              <div >Back to <a href="#" (click)="togglePopup('login')">Login now!</a></div>
+            </div>
+
+          </form>
+        </div>
+
       </div>
-
-    </div>
-    <div class="login-footer">
-      <div *ngIf="isLogin">Need an account? <a href="#" (click)="isLogin=false">Sign up now!</a></div>
-      <div *ngIf="!isLogin">Back to <a href="#" (click)="isLogin=true">Login now!</a></div>
+      <div class="login-footer">
+        <div *ngIf="popupType == 'login'">Need an account? <a href="#" (click)="togglePopup('signup')">Sign up now!</a></div>
+        <div *ngIf="popupType == 'signup'">Back to <a href="#" (click)="togglePopup('login')">Login now!</a></div>
+      </div>
     </div>
   </div>
+
+
 </div>
