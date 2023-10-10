@@ -1,4 +1,5 @@
 import {EventEmitter, Injectable} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +7,7 @@ import {EventEmitter, Injectable} from '@angular/core';
 export class CommonService {
 
   needLogin:EventEmitter<any> = new EventEmitter<any>();
-  constructor() { }
+  constructor(private router:Router) { }
 
   public generateTempEditorId(length=20) {
     let result = '';
@@ -39,5 +40,25 @@ export class CommonService {
 
   removeTempEditorContent() {
     sessionStorage.removeItem("_i");
+  }
+
+  navigateEditor() {
+    this.router.navigate(["editor", this.generateTempEditorId()])
+  }
+
+  generateAuthUser(user:any) {
+    if (!sessionStorage.getItem("_u")) {
+      sessionStorage.setItem("_u", btoa( JSON.stringify(user)));
+    }
+  }
+  getAuthUser() {
+    if (sessionStorage.getItem("_u")) {
+      const user = sessionStorage.getItem("_u");
+     return (user) ? JSON.parse(window.atob(user)) : null;
+    }
+    return null;
+  }
+  removeAuthUser() {
+    sessionStorage.removeItem('_u');
   }
 }

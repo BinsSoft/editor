@@ -7,7 +7,9 @@
       <input type="text" placeholder="Search...">
     </div>
     <div class="btn-content">
-      <button (click)="toggleLogin()">Log In</button>
+<!--      <button (click)="navigateEditor()" class="new-project" *ngIf="innerHeader"><i class="fa fa-plus"></i></button>&nbsp;-->
+      <button (click)="toggleLogin()" *ngIf="!isLoggedInUser">Log In</button>
+      <button [routerLink]="['/profile']" *ngIf="isLoggedInUser">Welcome {{isLoggedInUser['name']}}</button>
     </div>
   </div>
 </div>
@@ -23,39 +25,72 @@
         </div>
       </div>
       <div class="manual-content">
+
         <div class="login-content" *ngIf="popupType == 'login'">
-          <form>
+          <div class="form-success" *ngIf="successMessage">{{successMessage}}</div>
+          <div class="login-error" *ngIf="loginErrorMessage">{{loginErrorMessage}}</div>
+          <form [formGroup]="loginForm">
             <div class="form-row">
               <label>Email</label>
-              <input type="email" class="form-input"/>
+              <input type="email" class="form-input" formControlName="email"/>
             </div>
             <div class="form-row">
               <label>Password</label>
-              <input type="password" class="form-input"/>
+              <input type="password" class="form-input" formControlName="password"/>
             </div>
             <div class="form-row action-row">
-              <button class="btn">Log In</button>
+              <button class="btn" (click)="loginAction()">Log In</button>
               <a href="javascript:void(0)" (click)="togglePopup('forgotpassword')">Forgot Password?</a>
             </div>
 
           </form>
         </div>
         <div class="signup-content" *ngIf="popupType == 'signup'">
-          <form>
+
+          <form [formGroup]="signupForm">
             <div class="form-row">
               <label>Name</label>
-              <input type="text" class="form-input"/>
+              <input type="text" class="form-input" formControlName="name"/>
+              <div class="form-error" *ngIf="!isValidSignup && signupForm.controls.name.invalid">
+                <div>Name is required.</div>
+              </div>
             </div>
             <div class="form-row">
               <label>Email</label>
-              <input type="email" class="form-input"/>
+              <input type="email" class="form-input" formControlName="email"/>
+              <div class="form-error" *ngIf="!isValidSignup && signupForm.controls.email.invalid">
+                <div *ngIf="signupForm.controls.email.errors && signupForm.controls.email.errors.required">Email is required.</div>
+                <div *ngIf="signupForm.controls.email.errors && signupForm.controls.email.errors.email">Email is invalid.</div>
+              </div>
+              <div class="form-error" *ngIf="emailExistsError">{{emailExistsError}}</div>
             </div>
             <div class="form-row">
               <label>Password</label>
-              <input type="password" class="form-input"/>
+              <input type="password" class="form-input" formControlName="password"/>
+              <div class="form-error" *ngIf="!isValidSignup && signupForm.controls.password.invalid">
+                <div *ngIf="signupForm.controls.password.errors && signupForm.controls.password.errors.required">Password is required.</div>
+                <div *ngIf="signupForm.controls.password.errors && signupForm.controls.password.errors.invalidPassword">
+                  The password should be a minimum of eight characters long.<br/>
+                  It has at least one lower case letter.<br/>
+                  It has at least one upper case letter.<br/>
+                  It has at least one number.
+                </div>
+              </div>
+
+
+
+            </div>
+            <div class="form-row">
+              <label>Confirm Password</label>
+              <input type="password" class="form-input" formControlName="confirmpassword"/>
+              <div class="form-error" *ngIf="!isValidSignup && signupForm.controls.confirmpassword.invalid">
+                <div *ngIf="signupForm.controls.confirmpassword.errors && signupForm.controls.confirmpassword.errors.required">Password is required.</div>
+                <div *ngIf="signupForm.controls.confirmpassword.errors && signupForm.controls.confirmpassword.errors.passwordMismatch">Password is not matched.</div>
+              </div>
+
             </div>
             <div class="form-row action-row">
-              <button class="btn">Sign up</button>
+              <button class="btn" (click)="signupAction()">Sign up</button>
             </div>
 
           </form>

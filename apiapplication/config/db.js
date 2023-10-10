@@ -7,28 +7,34 @@ var DB = {
 	password : (process.env.DB_PASSWORD || null),
 
 	connection : function(dataBaseName) {
-
 		if(process.env.DB_DRIVER && process.env.DB_DRIVER=='mongo' ) {
 			global.mongoose.Promise = global.Promise;
-			var mongoConnectStr = "mongodb://";
+			var mongoConnectStr = "mongodb+srv://";
 			if(DB.username != null) {
 				mongoConnectStr += DB.username;
 			}
 			if(DB.password != null) {
 				mongoConnectStr += ":"+DB.password+"@";
 			}
-			mongoConnectStr += DB.host + ":"+DB.port+"/"+DB.database;
-			if (DB.authdb != null){
-				mongoConnectStr += '?authSource='+DB.authdb;
+			mongoConnectStr += DB.host ;
+			if (DB.port) {
+				mongoConnectStr += ":"+DB.port;
 			}
-			//console.log(mongoConnectStr);
-			global.mongoose.connect(mongoConnectStr,{ useNewUrlParser: true, useUnifiedTopology :true}, (err)=> {
+			mongoConnectStr += "/"+DB.database+"?";
+			if (DB.authdb != null){
+				mongoConnectStr += 'authSource='+DB.authdb;
+			}
+			mongoConnectStr += "&retryWrites=true&w=majority";
+
+			global.mongoose.connect(mongoConnectStr,{ useUnifiedTopology :true}, (err)=> {
+				console.log(mongoConnectStr);
 				console.log("3) Mongo db server starts")
+				console.log(err)
 			});
 		}
 		
 	},
 
 };
-DB.connection();
+// DB.connection();
 module.exports =  DB;

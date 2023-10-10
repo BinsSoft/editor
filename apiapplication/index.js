@@ -3,6 +3,9 @@ global.app 			= express();
 const http 			= require('http').Server(global.app);
 global.mongo 		= require('mongodb');
 global.mongoose 	= require('mongoose');
+
+global.request        = require('request');
+
 const  cors = require('cors')
 
 global.fs 			= require("fs");

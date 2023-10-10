@@ -13,6 +13,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   theme = 'vs-dark';
   editorId:string = '';
   editorValue:string ="";
+  loggedInUser: any = null;
   codeModel : CodeModel = {
     language: 'html',
     uri: 'main.html',
@@ -42,6 +43,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   };
   showSave:any = null;
   constructor(private ar: ActivatedRoute, private commonService: CommonService) {
+    this.loggedInUser = this.commonService.getAuthUser();
     this.ar.params.subscribe((data:any)=>{
       this.editorId = data.tempId;
       this.commonService.createTempEditorContentInStorage(this.editorId);
@@ -75,8 +77,12 @@ export class EditorComponent implements OnInit, OnDestroy {
         this.commonService.updateTempEditorContentInStorage(this.editorId, this.codeModel.value)
         break;
       case "save":
-        this.toggleSave();
-        // this.commonService.needLogin.emit(true);
+        if (this.commonService.getAuthUser()){
+          this.loggedInUser = this.commonService.getAuthUser();
+          this.toggleSave();
+        } else {
+          this.commonService.needLogin.emit(true);
+        }
         break;
     }
   }

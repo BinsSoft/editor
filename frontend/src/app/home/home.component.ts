@@ -15,6 +15,6 @@ export class HomeComponent implements OnInit {
   }
 
   navigateEditor() {
-    this.router.navigate(["editor", this.commonService.generateTempEditorId()])
+    this.commonService.navigateEditor();
   }
 }
