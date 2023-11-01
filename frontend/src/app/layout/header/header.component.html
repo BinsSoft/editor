@@ -40,7 +40,7 @@
             </div>
             <div class="form-row action-row">
               <button class="btn" (click)="loginAction()">Log In</button>
-              <a href="javascript:void(0)" (click)="togglePopup('forgotpassword')">Forgot Password?</a>
+              <span class="btn-action" (click)="togglePopup('forgotpassword')">Forgot Password?</span>
             </div>
 
           </form>
@@ -105,7 +105,7 @@
 
             <div class="form-row action-row">
               <button class="btn">Send</button>
-              <div >Back to <a href="#" (click)="togglePopup('login')">Login now!</a></div>
+              <div >Back to <span class="btn-action" (click)="togglePopup('login')">Login now!</span></div>
             </div>
 
           </form>
@@ -113,8 +113,8 @@
 
       </div>
       <div class="login-footer">
-        <div *ngIf="popupType == 'login'">Need an account? <a href="#" (click)="togglePopup('signup')">Sign up now!</a></div>
-        <div *ngIf="popupType == 'signup'">Back to <a href="#" (click)="togglePopup('login')">Login now!</a></div>
+        <div *ngIf="popupType == 'login'">Need an account? <span class="btn-action" (click)="togglePopup('signup')">Sign up now!</span></div>
+        <div *ngIf="popupType == 'signup'">Back to <span class="btn-action" (click)="togglePopup('login')">Login now!</span></div>
       </div>
     </div>
   </div>

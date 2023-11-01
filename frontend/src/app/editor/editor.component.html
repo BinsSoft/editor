@@ -28,7 +28,21 @@
       </div>
 
     </div>
-
+    <div class="btn-div">
+      <label class="btn-label" (click)="action('export')"><i class="fa fa-download"></i> Export</label>
+      <div class="save-form-container" [ngClass]="{'slide-down':showExport==true, 'slide-up': showExport==false}">
+        <form [formGroup]="exportForm">
+          <div class="form-row">
+            <label>Title</label>
+            <input type="text" class="form-control" formControlName="name"/>
+          </div>
+          <div class="form-row btn-row">
+            <button (click)="download()"  [disabled]="exportForm.invalid">Export</button>
+          </div>
+        </form>
+        <div class="save-back" (click)="toggleExport()"></div>
+      </div>
+    </div>
     <div class="btn-div"> <label class="btn-label"><i class="fa fa-arrows-alt"></i> Full Screen</label></div>
   </div>
   <div class="editor-content">

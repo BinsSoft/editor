@@ -65,6 +65,7 @@
             padding: 5px;
             background: #00000026;
             border: 1px solid rgb(97 92 92);
+            color:#FFF;
           }
           button {
             background: #47cf73;
@@ -77,6 +78,10 @@
             margin-right: 10px;
             &.cancel {
               background: #f76868;
+            }
+            &:disabled {
+              background: #73ab84 !important;
+              color: #807979 !important;
             }
           }
         }

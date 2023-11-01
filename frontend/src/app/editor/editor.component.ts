@@ -2,6 +2,7 @@ import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core
 import {CodeModel} from "@ngstack/code-editor";
 import {ActivatedRoute} from "@angular/router";
 import {CommonService} from "../services/common.service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-editor',
@@ -42,7 +43,9 @@ export class EditorComponent implements OnInit, OnDestroy {
     automaticLayout: true
   };
   showSave:any = null;
-  constructor(private ar: ActivatedRoute, private commonService: CommonService) {
+  showExport: any = null;
+  exportForm: FormGroup;
+  constructor(private ar: ActivatedRoute, private commonService: CommonService, private fb:FormBuilder) {
     this.loggedInUser = this.commonService.getAuthUser();
     this.ar.params.subscribe((data:any)=>{
       this.editorId = data.tempId;
@@ -57,6 +60,9 @@ export class EditorComponent implements OnInit, OnDestroy {
 
       }
     })
+    this.exportForm = this.fb.group({
+      "name": ["", [Validators.required]]
+    });
   }
 
   ngOnInit(): void {
@@ -66,6 +72,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   //   console.log(value);
   //   this.editorValue = value;
   // }
+
 
   action(type: string) {
     switch (type) {
@@ -84,6 +91,9 @@ export class EditorComponent implements OnInit, OnDestroy {
           this.commonService.needLogin.emit(true);
         }
         break;
+      case "export":
+        this.toggleExport();
+        break;
     }
   }
 
@@ -93,5 +103,38 @@ export class EditorComponent implements OnInit, OnDestroy {
 
   toggleSave() {
     this.showSave = (!this.showSave);
+  }
+
+  download() {
+    if (this.codeModel.value && this.exportForm.valid) {
+
+      var textToWrite = this.codeModel.value; //Your text input;
+      var textFileAsBlob = new Blob([textToWrite], {type:'html'});
+      var fileNameToSaveAs = this.exportForm.value.name+".html";
+
+      var downloadLink = document.createElement("a");
+      downloadLink.download = fileNameToSaveAs;
+      downloadLink.innerHTML = "Download File";
+      if (window['webkitURL'] != null)
+      {
+        // Chrome allows the link to be clicked
+        // without actually adding it to the DOM.
+        downloadLink.href = window['webkitURL'].createObjectURL(textFileAsBlob);
+      }
+      else
+      {
+        // Firefox requires the link to be added to the DOM
+        // before it can be clicked.
+        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+        // downloadLink.onclick = destroyClickedElement;
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+      }
+      downloadLink.click();
+    }
+  }
+
+  toggleExport() {
+    this.showExport = (!this.showExport);
   }
 }
